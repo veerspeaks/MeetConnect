@@ -10,6 +10,7 @@
             }`}
             onClick={() => handleSelect("front end")}
           >
+            {/* test comment */}
             Front End
           </li>
           <li
