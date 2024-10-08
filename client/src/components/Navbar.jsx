@@ -92,7 +92,10 @@ function Navbar() {
     <div className="bg-[#222831] p-6 shadow-md">
       <div className="md:hidden">
         <div className="flex justify-between">
-          <span className="text-2xl md:text-4xl text-[#FFD369] font-bold">
+          <span 
+            className="text-2xl md:text-4xl text-[#FFD369] font-bold" 
+            onClick={() => navigate("/")}
+          >
             {"<MeetConnect />"}
           </span>
           <li
@@ -134,26 +137,29 @@ function Navbar() {
             )}
           </li>
         </div>
-        <div className="flex justify-center pt-10 rounded-full">
-          <select
-            value={selectedIndex}
-            onChange={(e) =>
-              handleSelect(
-                e.target.value,
-                e.target.options[e.target.selectedIndex].text
-              )
-            }
-            className="bg-gray-900 text-white p-2 rounded-full"
-          >
-            {["Schedule", "My Interviews", "Practice Resource"].map(
-              (item, index) => (
-                <option key={index} value={index}>
-                  {item}
-                </option>
-              )
-            )}
-          </select>
-        </div>
+        {/* Conditionally render the dropdown based on selectedIndex */}
+        {selectedIndex !== "profile" && (
+          <div className="flex justify-center pt-10 rounded-full">
+            <select
+              value={selectedIndex}
+              onChange={(e) =>
+                handleSelect(
+                  e.target.value,
+                  e.target.options[e.target.selectedIndex].text
+                )
+              }
+              className="bg-gray-900 text-white p-2 rounded-full"
+            >
+              {["Schedule", "My Interviews", "Practice Resource"].map(
+                (item, index) => (
+                  <option key={index} value={index}>
+                    {item}
+                  </option>
+                )
+              )}
+            </select>
+          </div>
+        )}
       </div>
       <div className="hidden md:flex justify-between">
         <span className="md:text-4xl text-[#FFD369] font-bold">
