@@ -6,7 +6,8 @@
   "scripts": {
     "dev:client": "cd client && vite",
     "dev:server": "cd server && nodemon server.cjs",
-    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\""
+    "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
+    "start": "cd server && node server.cjs" // Add this line
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
