@@ -5,6 +5,7 @@ const categoryRoute = require('./route/categoryRoute.cjs')
 const interviewRoute = require('./route/interviewRoute.cjs')
 const usersRoute = require('./route/usersRoute.cjs')
 const session = require('express-session')
+const path = require('path'); // Import path module
 const app = express();
 const PORT = process.env.PORT || 3000;
 const passport = require('passport')
@@ -110,6 +111,14 @@ app.use('/api/categories', checkAuthenticated, categoryRoute)
 app.use('/api/interviews', checkAuthenticated, interviewRoute)
 app.use('/api/users',usersRoute)
 app.use('/api/questions', questionsRoute)
+
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, '../client/dist'))); // Adjust path to your build directory
+
+// Handle all requests by sending the index.html file
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist', 'index.html')); // Adjust path to your build directory
+});
 
 app.listen(PORT, () =>
 {
