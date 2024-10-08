@@ -7,7 +7,8 @@
     "dev:client": "cd client && vite",
     "dev:server": "cd server && nodemon server.cjs",
     "dev": "concurrently \"npm run dev:client\" \"npm run dev:server\"",
-    "start": "concurrently \"cd server && node server.cjs\" \"cd client && vite\""
+    "start": "concurrently \"cd server && node server.cjs\" \"cd client && vite\"",
+    "build": "cd client && vite build"
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
