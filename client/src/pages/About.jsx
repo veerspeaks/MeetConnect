@@ -14,8 +14,8 @@ function About() {
             <h2 className="text-4xl font-semibold text-center mb-6">Our Team</h2>
             <div className="bg-gray-700 p-6 rounded-lg shadow-lg mb-6"> {/* Co-founders section styling */}
                 <h3 className="text-3xl font-semibold">Co-founders</h3>
-                <p className="mt-2">Swapnabir Dutta - CEO: Jane has over 10 years of experience in the tech industry, leading innovative projects.</p> {/* Co-founder info */}
-                <p className="mt-2">Vishal Gupta - CTO: John is a tech visionary with a passion for developing cutting-edge solutions.</p> {/* Co-founder info */}
+                <p className="mt-2">Swapnabir Dutta - CEO: Swapnabir has over 10 years of experience in the tech industry, leading innovative projects.</p> {/* Co-founder info */}
+                <p className="mt-2">Vishal Gupta - CTO: Vishal is a tech visionary with a passion for developing cutting-edge solutions.</p> {/* Co-founder info */}
             </div>
             <div className="bg-gray-700 p-6 rounded-lg shadow-lg"> {/* Investors section styling */}
                 <h3 className="text-3xl font-semibold">Investors</h3>
