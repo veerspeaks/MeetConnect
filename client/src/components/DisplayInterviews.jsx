@@ -74,7 +74,7 @@ const DisplayInterviews = () => {
         {/* Render interview cards based on selected tab */}
         {selected === "All Interviews" && (
           <ul className="flex flex-wrap gap-4 p-4">
-            {[...interviews, newInterview].map((interview) => (
+            {[...interviews].map((interview) => (
               <InterviewCard
                 key={interview?._id}
                 interviewerId={interview?.interviewerId} 
@@ -82,7 +82,7 @@ const DisplayInterviews = () => {
                 isCompleted={interview?.status}
                 Score={interview?.feedback?.score}
                 Comments={interview?.feedback?.comments}
-                date={new Date(interview?.scheduledDate).toLocaleString()} 
+                date={interview?.scheduledDate} 
                 className="w-full sm:w-1/2 md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out"
                 isMobile={true}
               />
@@ -100,7 +100,7 @@ const DisplayInterviews = () => {
                 isCompleted="completed"
                 Score={interview?.feedback?.score}
                 Comments={interview?.feedback?.comments}
-                date={new Date(interview?.scheduledDate).toLocaleString()}
+                date={interview?.scheduledDate} 
                 className="w-full sm:w-1/2 md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out"
                 isMobile={true}
               />
@@ -116,7 +116,7 @@ const DisplayInterviews = () => {
                 interviewerId={interview?.interviewerId}
                 category={interview?.category}
                 isCompleted="pending"
-                date={new Date(interview?.scheduledDate).toLocaleDateString()}
+                date={interview?.scheduledDate} 
                 className="w-full sm:w-1/2 md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out"
                 isMobile={true}
               />
@@ -166,7 +166,7 @@ const DisplayInterviews = () => {
         {/* Render interview cards based on selected tab */}
         {selected === "All Interviews" && (
           <ul className="flex flex-wrap gap-4 p-4">
-            {[...interviews, newInterview].map((interview) => (
+            {[...interviews].map((interview) => (
               <InterviewCard
                 key={interview?._id}
                 interviewerId={interview?.interviewerId} 
@@ -174,7 +174,7 @@ const DisplayInterviews = () => {
                 isCompleted={interview?.status}
                 Score={interview?.feedback?.score}
                 Comments={interview?.feedback?.comments}
-                date={new Date(interview?.scheduledDate).toLocaleString()} 
+                date={interview?.scheduledDate} 
                 className="w-full sm:w-1/2 md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out"
               />
             ))}
@@ -191,7 +191,7 @@ const DisplayInterviews = () => {
                 isCompleted="completed"
                 Score={interview?.feedback?.score}
                 Comments={interview?.feedback?.comments}
-                date={new Date(interview?.scheduledDate).toLocaleString()}
+                date={interview?.scheduledDate} 
                 className="w-full sm:w-1/2 md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out"
               />
             ))}
@@ -206,7 +206,7 @@ const DisplayInterviews = () => {
                 interviewerId={interview?.interviewerId}
                 category={interview?.category}
                 isCompleted="pending"
-                date={new Date(interview?.scheduledDate).toLocaleDateString()}
+                date={interview?.scheduledDate} 
                 className="w-full sm:w-1/2 md:w-1/3 transition-transform transform hover:scale-105 hover:shadow-lg duration-300 ease-in-out"
               />
             ))}

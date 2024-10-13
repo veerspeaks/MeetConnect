@@ -5,16 +5,21 @@ import { addInterview } from "../redux/slices/interviewSlice";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import dayjs from 'dayjs'; // Import dayjs for date formatting
+import utc from 'dayjs/plugin/utc'; // Import UTC plugin
+import timezone from 'dayjs/plugin/timezone'; // Import timezone plugin
+
+dayjs.extend(utc); // Extend dayjs with UTC plugin
+dayjs.extend(timezone); // Extend dayjs with timezone plugin
 
 const NewInterview = () => {
   const [categories, setCategories] = useState(null);
   const [selectedCategory, setSelectedCategory] = useState("front end");
   const [interviewrs, setInterviewers] = useState(null);
-  const [int, setInt] = useState(interviewrs)
+  const [int, setInt] = useState(interviewrs);
   const user = useSelector((state) => state.user.user.user);
 
   const dispatch = useDispatch();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -52,33 +57,30 @@ const NewInterview = () => {
   const handleSelectCategory = (event) => {
     const category = event.target.value;
     setSelectedCategory(category);
-    
   };
 
   const handleSelectInterviewer = (event) => {
     const interviewerId = event.target.value;
-    setInt(interviewerId)
-  }
+    setInt(interviewerId);
+  };
 
   const [dateTime, setDateTime] = useState(dayjs()); // Add state for dateTime
 
   const handleSubmit = () => {
     const userId = user._id;
     
-    // Format dateTime to the required format
-    const formattedDate = dateTime.format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"); // Adjust to UTC if needed
-
+    // Format dateTime to the required format in IST
+    const formattedDate = dateTime.tz('Asia/Kolkata').format("YYYY-MM-DDTHH:mm:ss.SSS[Z]"); // Save as Indian Standard Time
+    
     // Ensure int is defined and valid before dispatching
     if (int) {
         dispatch(addInterview({ studentId: userId, interviewerId: int, category: selectedCategory, date: formattedDate })); // Include formatted date
         
-        navigate('/my-interviews')
+        navigate('/my-interviews');
     } else {
         console.log("Interviewer ID is not selected");
     }
-  }  
-
-
+  };
 
   return (
     <div className="w-full flex flex-col md:px-16 bg-[#393E46] ">

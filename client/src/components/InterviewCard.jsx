@@ -5,9 +5,14 @@ import backEnd from '../assets/back_end.png';
 import fullStack from '../assets/full_stack.png';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import dayjs from 'dayjs';
+import timezone from 'dayjs/plugin/timezone';
+dayjs.extend(timezone)
 
 const InterviewCard = ({ interviewerId, category, isCompleted, Score, Comments, date, isMobile }) => {
   const navigate = useNavigate();
+  // console.log(date)
+  // console.log(dayjs.utc(date).format('YYYY-MM-DD HH:mm:ss'))
 
   const images = {
     'front end': frontEnd,
@@ -32,10 +37,15 @@ const InterviewCard = ({ interviewerId, category, isCompleted, Score, Comments, 
     };
 
     const calculateTimeRemaining = () => {
-      const now = new Date();
-      const target = new Date(date);
-      const difference = target - now;
-
+      // Remove 'Z' from the date string to prevent UTC interpretation
+      const localDate = date.replace('Z', '');
+    
+      // Parse the date as local time
+      const now = dayjs(); // Current local time
+      const target = dayjs(localDate); // Target date treated as local
+    
+      const difference = target.diff(now); // Difference in milliseconds
+    
       if (difference > 0) {
         const days = Math.floor(difference / (1000 * 60 * 60 * 24));
         const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -73,7 +83,7 @@ const InterviewCard = ({ interviewerId, category, isCompleted, Score, Comments, 
                 <span className='text-[#FFD369] font-bold'>Interviewer: </span>
                 <span className='text-white'>{interviewerName || 'loading...'}</span>
               </div>
-              <span className="text-white px-1 block">{date}</span>
+              <span className="text-white px-1 block">{dayjs.utc(date).format('YYYY-MM-DD HH:mm:ss')}</span>
             </div>
             <div className="py-4 flex justify-between">
               <div className="w-2/3">
@@ -101,7 +111,7 @@ const InterviewCard = ({ interviewerId, category, isCompleted, Score, Comments, 
                 <span className='text-[#FFD369] font-bold'>Interviewer: </span>
                 <span className='text-white'>{interviewerName || 'loading...'}</span>
               </div>
-              <span className="text-white px-1 block">{date}</span>
+              <span className="text-white px-1 block">{dayjs.utc(date).format('YYYY-MM-DD HH:mm:ss')}</span>
             </div>
             <div className="py-4 flex justify-between">
               <div className={`flex text-center  ${isMobile ? 'flex-row w-full justify-between' : 'flex-col w-2/3 justify-start'}`}>
