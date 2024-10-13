@@ -6,6 +6,7 @@ import PrivateRoute from './pages/PrivateRoute'; // Import the PrivateRoute comp
 import Profile from "./pages/Profile";
 import Interviews from "./pages/Interviews";
 import Questions from "./pages/Questions"; // Import Questions page
+import About from "./pages/About";
 
 function App() {
   return (
@@ -44,6 +45,14 @@ function App() {
           element={
             <PrivateRoute>
               <Questions />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/about" // Use wildcard for sub-routes
+          element={
+            <PrivateRoute>
+              <About/>
             </PrivateRoute>
           }
         />

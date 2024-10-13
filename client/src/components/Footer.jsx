@@ -9,8 +9,7 @@ function Footer() {
                     <div className="w-full md:w-1/3 mb-6 pr-10">
                         <h2 className="text-2xl font-bold mb-4">About Us</h2>
                         <p className="text-gray-400">
-                            We offer the finest handmade jewelry with unique designs crafted with love and care.
-                            Explore our collection and find your next timeless piece.
+                            We are a team of passionate individuals dedicated to creating a seamless and efficient interview scheduling experience. Our goal is to simplify the process for both interviewers and candidates, making it easier for everyone to connect and find the right fit.
                         </p>
                     </div>
 
@@ -21,11 +20,9 @@ function Footer() {
                             <li className="mb-2">
                                 <a href="#" className="text-gray-400 hover:text-white">Home</a>
                             </li>
+                            
                             <li className="mb-2">
-                                <a href="#" className="text-gray-400 hover:text-white">Shop</a>
-                            </li>
-                            <li className="mb-2">
-                                <a href="#" className="text-gray-400 hover:text-white">About Us</a>
+                                <a href="/about" className="text-gray-400 hover:text-white">About Us</a>
                             </li>
                             <li className="mb-2">
                                 <a href="#" className="text-gray-400 hover:text-white">Contact</a>
