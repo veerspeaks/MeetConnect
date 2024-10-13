@@ -3,27 +3,32 @@ import InterviewCard from "../components/InterviewCard";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchInterviews } from "../redux/slices/interviewSlice";
 
+// Component to display interviews
 const DisplayInterviews = () => {
-  const userId = useSelector((state) => state.user.user.user._id); // Getting user ID from user state
+  // Selecting user ID from the state
+  const userId = useSelector((state) => state.user.user.user._id); 
   const dispatch = useDispatch();
 
+  // Fetching interviews when the component mounts or userId changes
   useEffect(() => {
     if (userId) {
       dispatch(fetchInterviews(userId));
     }
   }, [dispatch, userId]); // Dependency array ensures this runs only when userId is available
 
+  // Selecting interviews and the newly added interview from the state
   const interviews = useSelector((state) => state.interviews.interviews); // Getting interviews from interview state
   const newInterview = useSelector((state) => state.interviews.NewIntervie); // Get the newly added interview
 
- 
+  // State to manage the selected tab
   const [selected, setSelected] = useState("All Interviews");
 
+  // Function to handle tab selection
   const handleSelect = (listName) => {
     setSelected(listName);
   };
 
-  // Filter interviews based on their status
+  // Filtering interviews based on their status
   const completedInterviews = interviews.filter(
     (interview) => interview.status === "completed"
   );
@@ -31,8 +36,7 @@ const DisplayInterviews = () => {
     (interview) => interview.status === "pending"
   );
 
- 
-
+  // JSX for the component
   return (
     <>
     {/* //display interviews on smaller and medium screen */}
