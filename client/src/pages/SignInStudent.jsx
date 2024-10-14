@@ -11,6 +11,11 @@ const SignInStudent = () => {
         <div className='flex w-full md:w-1/2 items-center justify-center'>
             <SignIn />
         </div>
+        <div className='absolute bottom-0 left-1/2 transform -translate-x-1/2 mt-4'>
+            <div className='p-4 bg-green-500 bg-opacity-30 text-white rounded text-center'>
+                <p>For <strong>Almabeter Reviewer</strong>: Please sign in with email: <strong>alice.johnson@example.com</strong> and password: <strong>hashedpassword789</strong> to be able to check completed interviews from the database.</p>
+            </div>
+        </div>
     </div>
   )
 }
